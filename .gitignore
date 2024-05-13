@@ -38,7 +38,7 @@ local.properties
 #
 node_modules/
 *.env
-cmsapp-e2b3f-firebase-adminsdk-28gqd-bb9d7ae36b.js
+# cmsapp-e2b3f-firebase-adminsdk-28gqd-bb9d7ae36b.js
 npm-debug.log
 yarn-error.log
 
