@@ -76,11 +76,12 @@ const password = process.env.DB_PASSWORD;
 
 Connection(username, password);
 
+// setting jobs here
 
-cron.schedule('* * * * *', () => {
- console.log("cameeeee");
- sendNotification(data)
-});
+// cron.schedule('* * * * *', () => {
+//  console.log("cameeeee");
+//  sendNotification(data)
+// });
 
 app.get("/", (req, res) => {
   res.send("Hello world");
