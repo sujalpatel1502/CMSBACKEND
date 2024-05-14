@@ -12,6 +12,8 @@ import admin from 'firebase-admin'
 import {getMessaging} from "firebase-admin/messaging"
 import { applicationDefault,initializeApp } from "firebase-admin/app";
 import {serviceAccount} from './cmsapp-e2b3f-firebase-adminsdk-28gqd-bb9d7ae36b.js'
+import cron from "node-cron"
+import { sendNotification } from "./controllers/Notification.js";
 dotev.config();
 
 
@@ -73,6 +75,12 @@ const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 
 Connection(username, password);
+
+
+cron.schedule('* * * * *', () => {
+ console.log("cameeeee");
+ sendNotification(data)
+});
 
 app.get("/", (req, res) => {
   res.send("Hello world");

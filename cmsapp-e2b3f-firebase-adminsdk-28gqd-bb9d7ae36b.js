@@ -2,7 +2,7 @@ import dotev from "dotenv";
 
 dotev.config();
 
-console.log("==>",process.env.PRIVATE_KEY_ID);
+// console.log("==>",process.env.PRIVATE_KEY);
 
 export const serviceAccount={
   "type": "service_account",
