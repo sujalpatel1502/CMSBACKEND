@@ -253,12 +253,13 @@ export const updateFeesPaidStatus = async (request, response) => {
 };
 
 export const addStudentAttendance=async(req,res)=>{
+    // console.log("cameeee");
     const{studentId,courseId,Date}=req.params;
     console.log("studenidcourseiddate",studentId,courseId,Date);
     try {
         const updatedStudent = await Student.findOneAndUpdate(
             { _id: studentId, 'courseEnrollments.courseId': courseId }, 
-            { $push: { 'courseEnrollments.$.courseAttendance': Date, } },
+            { $addToSet: { 'courseEnrollments.$.courseAttendance': Date, } },
             { new: true } 
         );
 

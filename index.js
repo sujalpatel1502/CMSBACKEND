@@ -77,11 +77,26 @@ const password = process.env.DB_PASSWORD;
 Connection(username, password);
 
 // setting jobs here
+const targetDate = new Date('2024-05-14T14:54:30');
 
 // cron.schedule('* * * * *', () => {
 //  console.log("cameeeee");
-//  sendNotification(data)
+// //  sendNotification(data)
+// const now = new Date();
+
+//   // Compare current date and time with the target date and time
+//   if (now.getFullYear() >= targetDate.getFullYear() &&
+//       now.getMonth() >= targetDate.getMonth() &&
+//       now.getDate() >= targetDate.getDate() &&
+//       now.getHours() >= targetDate.getHours() &&
+//       now.getMinutes() >= targetDate.getMinutes()
+//       ) {
+//     console.log("hii");
+//     // sendNotification(data);
+//   }
+
 // });
+
 
 app.get("/", (req, res) => {
   res.send("Hello world");
