@@ -83,6 +83,19 @@ export const allcourse = async (req, res) => {
     response.status(500).json({ message: error.message });
   }
 };
+
+export const courseById = async (req, res) => {
+  const id=req.params.id;
+  console.log("{{{{[",id);
+  try {
+    const coursedata = await Course.findById({_id: id});
+    console.log(coursedata);
+    res.status(200).json({ data: coursedata });
+  } catch (error) {
+    console.log("errorrrrrrrrrrrrrrrrrrr while getting course", error);
+    response.status(500).json({ message: error.message });
+  }
+};
 export const updatecourse = async (req, res) => {
   const id = req.params.id;
   console.log("iddddd", id,req.body);

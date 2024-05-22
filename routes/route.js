@@ -26,6 +26,7 @@ import {
   allcourse,
   updatecourse,
   deletecourse,
+  courseById,
 } from "../controllers/course-controllers.js";
 
 const router = express.Router();
@@ -44,6 +45,7 @@ router.post("/studentData", studentdata);
 router.get("/allStudent", allStudent);
 router.post("/student/:id", studentById);
 router.post("/addCourse", addcourse);
+router.get('/course/:id',courseById);
 router.post("/updateCourse/:id", updatecourse);
 router.delete("/deleteCourse/:id", deletecourse);
 router.get("/allCourse", allcourse);
