@@ -33,7 +33,6 @@ const router = express.Router();
 
 router.post("/adminSignup", adminsignup);
 
-
 router.post("/adminLogin", adminlogin);
 router.post("/adminData", admindata);
 router.post("/teacherRegistration", teacherregistration);
@@ -45,16 +44,19 @@ router.post("/studentData", studentdata);
 router.get("/allStudent", allStudent);
 router.post("/student/:id", studentById);
 router.post("/addCourse", addcourse);
-router.get('/course/:id',courseById);
+router.get("/course/:id", courseById);
 router.post("/updateCourse/:id", updatecourse);
 router.delete("/deleteCourse/:id", deletecourse);
 router.get("/allCourse", allcourse);
 router.post("/enrollStudentInCourse", enrollStudentInCourse);
 router.get("/getStudentCourses/:studentId", getStudentCourses);
-router.put("/studentAttendance/:studentId/:courseId/:Date",addStudentAttendance);
-router.get("/studentByCourses/:courseid",getStudentByCourse)
 router.put(
-  "/updateFeesPaidStatus/:studentId/:courseId/:AmountPaid",
+  "/studentAttendance/:studentId/:courseId/:Date",
+  addStudentAttendance
+);
+router.get("/studentByCourses/:courseid", getStudentByCourse);
+router.put(
+  "/updateFeesPaidStatus/:studentId/:courseId/:AmountPaid/:Mode",
   updateFeesPaidStatus
 );
 export default router;
