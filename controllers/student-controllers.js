@@ -63,7 +63,7 @@ export const studentregistraion = async (request, response) => {
     if (existss) {
       formno = existss.formno + 1;
     }
-    const password = "1234";
+    const password = email.substring(0, 3) + watsappcontact.slice(-3);
     const newStudent = new Student({
       formno,
       name,
@@ -79,7 +79,7 @@ export const studentregistraion = async (request, response) => {
       watsappcontact,
       normalcontact,
     });
-    const emaill = "sujalpatel1502@gmail.com";
+    const emaill = email;
     const subject = "Your login credentials for the App";
     const text = `Dear Student,\n\nYour login credentials for the App are as follows:\n\nEmail: ${email}\nPassword: ${password}\n\nPlease use these credentials to log in to the App.\n\nBest regards,\n Team CMS`;
     sendEmail(emaill, subject, text);
@@ -109,7 +109,7 @@ export const studentlogin = async (request, response) => {
     //      return response.status(401).json({message:"incorrect password"});
     // }
     let user = await Student.findOne({ email: email });
-    if (user) {
+    if (user.password == password) {
       // return response.status(200).json(`${email} login sucessfull`)
       const token = Jwt.sign({ email: email }, JWT_SECRET);
       await Student.findOneAndUpdate({ token: fcmToken });

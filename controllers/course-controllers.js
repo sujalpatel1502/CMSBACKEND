@@ -64,8 +64,10 @@ export const addcourse = async (request, response) => {
           icon: "./Logo.png",
         },
       };
-      const Notify = await sendNotification(data);
-      console.log("notification Dataaa", Notify);
+      if (studentTeacherTokens.length > 0) {
+        const Notify = await sendNotification(data);
+        console.log("notification Dataaa", Notify);
+      }
     }
     response.status(200).json({ message: newCourse, status: 200 });
   } catch (error) {
