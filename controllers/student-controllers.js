@@ -134,11 +134,26 @@ export const studentdata = async (request, response) => {
   try {
     const user = Jwt.verify(token, JWT_SECRET);
     const useremail = user.email;
-    Student.findOne({ email: useremail }).then((data) => {
-      return response.send({ status: 201, data: data });
+
+    const student = await Student.findOne({ email: useremail }).populate({
+      path: "courseEnrollments.courseId",
+      model: "course",
+      select:
+        "coursecode coursename courseimage coursefees courseduration coursedesc",
     });
+
+    if (!student) {
+      return response
+        .status(404)
+        .send({ status: 404, message: "Student not found" });
+    }
+
+    console.log("Student data:", JSON.stringify(student, null, 2));
+
+    return response.status(200).send({ status: 200, data: student });
   } catch (error) {
-    return response.send({ error: error });
+    console.error("Error in studentdata:", error);
+    return response.status(500).send({ status: 500, error: error.message });
   }
 };
 

@@ -28,11 +28,20 @@ import {
   deletecourse,
   courseById,
 } from "../controllers/course-controllers.js";
+import {
+  addImageGallery,
+  allImages,
+  approveImage,
+  getApprovedImages,
+} from "../controllers/gallery-controllers.js";
 
 const router = express.Router();
 
 router.post("/adminSignup", adminsignup);
-
+router.post("/addImageGallery", addImageGallery);
+router.get("/allImages", allImages);
+router.put("/approveImage/:imageId", approveImage);
+router.get("/approvedImages", getApprovedImages);
 router.post("/adminLogin", adminlogin);
 router.post("/adminData", admindata);
 router.post("/teacherRegistration", teacherregistration);
