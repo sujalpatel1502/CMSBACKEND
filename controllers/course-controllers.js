@@ -6,7 +6,7 @@ import axios from "axios";
 // import {Logo} from '../../Client/src/assets/Logo.png'
 
 export const addcourse = async (request, response) => {
-  console.log("cameeeeeeeeeeeeeeee", request.body);
+  console.log("cameeeeeeeeeeeeeeee1111", request.body.courseCommencement);
   try {
     const exists = await Course.findOne({
       coursename: request.body.coursename,
@@ -15,8 +15,14 @@ export const addcourse = async (request, response) => {
       return response.status(401).json({ message: "course already exist" });
     }
 
-    const { coursename, coursefees, courseduration, courseimage, coursedesc } =
-      request.body;
+    const {
+      coursename,
+      coursefees,
+      courseduration,
+      courseimage,
+      coursedesc,
+      courseCommencement,
+    } = request.body;
     // Extract the first four letters of the course name
     const initials = coursename.substring(0, 4).toUpperCase();
 
@@ -34,6 +40,7 @@ export const addcourse = async (request, response) => {
       courseduration,
       coursecode,
       coursedesc,
+      courseCommencement,
     });
     await newCourse.save();
     // const coursename="Deployment"

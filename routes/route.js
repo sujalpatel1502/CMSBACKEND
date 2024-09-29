@@ -18,6 +18,8 @@ import {
   getStudentByCourse,
 } from "../controllers/student-controllers.js";
 import {
+  allTeacher,
+  deleteTeacher,
   teacherdata,
   teacherlogin,
 } from "../controllers/teacher-controller.js";
@@ -47,6 +49,7 @@ router.post("/adminData", admindata);
 router.post("/teacherRegistration", teacherregistration);
 router.post("/teacherLogin", teacherlogin);
 router.post("/teacherData", teacherdata);
+router.get("/allTeacher", allTeacher);
 router.post("/studentRegistration", studentregistraion);
 router.post("/studentLogin", studentlogin);
 router.post("/studentData", studentdata);
@@ -56,6 +59,7 @@ router.post("/addCourse", addcourse);
 router.get("/course/:id", courseById);
 router.post("/updateCourse/:id", updatecourse);
 router.delete("/deleteCourse/:id", deletecourse);
+router.delete("/deleteteacher/:id", deleteTeacher);
 router.get("/allCourse", allcourse);
 router.post("/enrollStudentInCourse", enrollStudentInCourse);
 router.get("/getStudentCourses/:studentId", getStudentCourses);
